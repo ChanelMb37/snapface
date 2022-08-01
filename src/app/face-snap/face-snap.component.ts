@@ -11,6 +11,7 @@ export class FaceSnapComponent implements OnInit {
   description!: string;
   createdDate!: Date;
   snaps!: number;
+  imageUrl!: string;
   
   // On va  initialiser les quatre propriétés dans la méthode  ngOnInit()
   ngOnInit() {
@@ -18,5 +19,6 @@ export class FaceSnapComponent implements OnInit {
     this.description = 'mon meilleur ami';
     this.createdDate = new Date();
     this.snaps = 6;
+    this.imageUrl = 'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg';
   }
 }
