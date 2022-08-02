@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
       description: 'mon meilleur voyage',
       imageUrl: 'https://cdn.pixabay.com/photo/2022/07/25/10/19/mountain-7343375_960_720.jpg',
       createdDate: new Date(),
-      snaps: 0,
+      snaps: 150,
       location: 'montagne'
     },
      {
