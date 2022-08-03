@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
       location: 'Paris'
     },
     {
-      title: 'Montagne',
+      title: 'La montagne',
       description: 'mon meilleur voyage',
       imageUrl: 'https://cdn.pixabay.com/photo/2022/07/25/10/19/mountain-7343375_960_720.jpg',
       createdDate: new Date(),
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
       location: 'montagne'
     },
      {
-      title:'Dog',
+      title:'My Dog',
       description: 'mon meilleur chien',
       imageUrl: 'https://cdn.pixabay.com/photo/2022/07/18/19/57/dog-7330712_960_720.jpg',
       createdDate: new Date(),
