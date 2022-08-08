@@ -68,14 +68,35 @@ export class FaceSnapsService {
 // crée un nouvel objet à partir de l'argument en ajoutant les champs manquants ;
 // ajoute 1 à l' id  du dernier ajouté au tableau pour générer le nouveau, puisque les  id  des FaceSnap sont des entiers croissants ;
 // ajoute le FaceSnap au tableau.
-    addFaceSnap(formValue: { title: string, description: string, imageUrl: string, location?: string }) {
-    const faceSnap: FaceSnap = {
-        ...formValue,
-        snaps: 0,
-        createdDate: new Date(),
-        id: this.faceSnaps[this.faceSnaps.length - 1].id + 1
-    };
-    this.faceSnaps.push(faceSnap);
-}
+  //   addFaceSnap(formValue: { title: string, description: string, imageUrl: string, location?: string }) {
+  //   const faceSnap: FaceSnap = {
+  //       ...formValue,
+  //       snaps: 0,
+  //       createdDate: new Date(),
+  //       id: this.faceSnaps[this.faceSnaps.length - 1].id + 1
+  //   };
+  //   this.faceSnaps.push(faceSnap);
+  // }
+
+  addFaceSnap(formValue: { title: string, description: string, imageUrl: string, location?: string }): Observable<FaceSnap> {
+    return this.getAllFaceSnaps().pipe(
+      // On retourne un tableau trié par ID pour s'assurer que le dernier élément du tableau possède l'ID le plus élevé.
+         map(facesnaps => [...facesnaps].sort((a,b) => a.id - b.id)),
+        //  On retourne ensuite le dernier élément de ce tableau.
+         map(sortedFacesnaps => sortedFacesnaps[sortedFacesnaps.length - 1]),
+        //  On retourne le nouveau FaceSnap avec son ID valable.
+         map(previousFacesnap => ({
+            ...formValue,
+            snaps: 0,
+            createdDate: new Date(),
+            id: previousFacesnap.id + 1
+        })),
+          // switchMap()  , génère la requête POST finale.
+        switchMap(newFacesnap => this.http.post<FaceSnap>(
+            'http://localhost:3000/facesnaps',
+            newFacesnap)
+        )
+    );
+  }
 
 }
