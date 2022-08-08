@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { FaceSnap } from "../models/face-snap.model";
+import { map, switchMap }  from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -28,19 +29,40 @@ export class FaceSnapsService {
     //     return faceSnap;
     //   }
     // }
+
     // modifier l'implémentation de la méthode de service  getFaceSnapById  . 
     // Le backend de développement propose une route pour récupérer un FaceSnap par son  id  :
     getFaceSnapById(faceSnapId: number): Observable<FaceSnap> {
       return this.http.get<FaceSnap>(`http://localhost:3000/facesnaps/${faceSnapId}`);
     }
+
 //  méthode snapFaceSnapById:
 // utilise  getFaceSnapById()  pour récupérer le FaceSnap, et si le deuxième argument est  'snap', rajoute un snap ; 
 // sinon, elle enlève un snap.
 // Pour tester cette méthode, il faudra injecter FaceSnapsService dans FaceSnapComponent. 
-    snapFaceSnapById(faceSnapId: number, snapType:'snap' | 'unsnap'): void {
+    // snapFaceSnapById(faceSnapId: number, snapType:'snap' | 'unsnap'): void {
       // const faceSnap = this.getFaceSnapById(faceSnapId);
       // snapType === 'snap' ? faceSnap.snaps++ : faceSnap.snaps--;
-    }
+    // }
+
+// modifier l'implémentation de  snapFaceSnapById()  pour implémenter la requête composée. 
+  snapFaceSnapById(faceSnapId: number, snapType: 'snap' | 'unsnap'): Observable<FaceSnap> {
+    return this.getFaceSnapById(faceSnapId).pipe(
+      // opérateur  map()  vous permet de prendre le FaceSnap retourné par le serveur, 
+      // et de le transformer en un FaceSnap avec un snap de plus ou de moins, selon que le  snapType  est  'snap'  ou  'unsnap'  .
+        map(faceSnap => ({
+            ...faceSnap,
+            snaps: faceSnap.snaps + (snapType === 'snap' ? 1 : -1)
+        })),
+        // opérateur  switchMap()  prend le FaceSnap modifié, et en génère une requête PUT avec la méthode  put  de HttpClient.  
+        // put  prend l'URL comme premier argument et le corps de la requête à envoyer comme deuxième argument, et retourne l'Observable qui correspond à cette requête.
+        switchMap(updatedFaceSnap => this.http.put<FaceSnap>(
+            `http://localhost:3000/facesnaps/${faceSnapId}`,
+            updatedFaceSnap)
+        )
+    );
+  }
+
 // méthode addFaceSnap:
 // accepte un objet comme argument, qui correspond à l'objet généré par le formulaire ;
 // crée un nouvel objet à partir de l'argument en ajoutant les champs manquants ;
