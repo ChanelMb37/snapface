@@ -20,21 +20,26 @@ export class FaceSnapsService {
     // cherche un FaceSnap par son  id  dans le tableau faceSnaps avec la fonction  find() 
     // retourne un FaceSnap si elle le trouve (d'où son type de retour), 
     // et  throw  une erreur sinon.
-    getFaceSnapById(faceSnapId:number): FaceSnap {
-      const faceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId);
-      if (!faceSnap) {
-        throw new Error('FaceSnap not found');
-      } else {
-        return faceSnap;
-      }
+    // getFaceSnapById(faceSnapId:number): FaceSnap {
+    //   const faceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId);
+    //   if (!faceSnap) {
+    //     throw new Error('FaceSnap not found');
+    //   } else {
+    //     return faceSnap;
+    //   }
+    // }
+    // modifier l'implémentation de la méthode de service  getFaceSnapById  . 
+    // Le backend de développement propose une route pour récupérer un FaceSnap par son  id  :
+    getFaceSnapById(faceSnapId: number): Observable<FaceSnap> {
+      return this.http.get<FaceSnap>(`http://localhost:3000/facesnaps/${faceSnapId}`);
     }
 //  méthode snapFaceSnapById:
 // utilise  getFaceSnapById()  pour récupérer le FaceSnap, et si le deuxième argument est  'snap', rajoute un snap ; 
 // sinon, elle enlève un snap.
 // Pour tester cette méthode, il faudra injecter FaceSnapsService dans FaceSnapComponent. 
     snapFaceSnapById(faceSnapId: number, snapType:'snap' | 'unsnap'): void {
-      const faceSnap = this.getFaceSnapById(faceSnapId);
-      snapType === 'snap' ? faceSnap.snaps++ : faceSnap.snaps--;
+      // const faceSnap = this.getFaceSnapById(faceSnapId);
+      // snapType === 'snap' ? faceSnap.snaps++ : faceSnap.snaps--;
     }
 // méthode addFaceSnap:
 // accepte un objet comme argument, qui correspond à l'objet généré par le formulaire ;
