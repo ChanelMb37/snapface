@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { CoreModule } from './core/core.module';
-import { FaceSnapsModule } from './face-snaps/face-snaps.module';
 import { LandingPageModule } from './landing-page/landing-page.module';
 
 
@@ -23,7 +22,6 @@ import { LandingPageModule } from './landing-page/landing-page.module';
     ReactiveFormsModule, 
     HttpClientModule,
     CoreModule,
-    FaceSnapsModule, 
     LandingPageModule
   ],
   

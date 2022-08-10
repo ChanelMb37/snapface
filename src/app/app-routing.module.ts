@@ -1,16 +1,12 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { FaceSnapListComponent } from "./face-snaps/components/face-snap-list/face-snap-list.component";
 import { LandingPageComponent } from "./landing-page/landing-page.component";
-import { NewFaceSnapComponent } from "./face-snaps/components/new-face-snap/new-face-snap.component";
 import { SingleFaceSnapComponent } from "./face-snaps/components/single-face-snap/single-face-snap.component";
 
 // tableau routes va lier les routes d'application (les différentes URL) aux components correspondants.
 // Pour enregistrer ces routes dans application, il faut les passer au routeur en passant un objet de configuration au décorateur  @NgModule()  de AppRoutingModule  
 const routes: Routes = [
-   {path: 'facesnaps/:id', component: SingleFaceSnapComponent},
-   {path: 'facesnaps', component: FaceSnapListComponent},
-   {path: 'create', component: NewFaceSnapComponent},
+   {path: 'facesnaps', loadChildren: () => import('./face-snaps/face-snaps.module').then(m => m.FaceSnapsModule)},
    {path: '', component: LandingPageComponent}
 ];
 
