@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { CoreModule } from './core/core.module';
 import { LandingPageModule } from './landing-page/landing-page.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { LandingPageModule } from './landing-page/landing-page.module';
     ReactiveFormsModule, 
     HttpClientModule,
     CoreModule,
-    LandingPageModule
+    LandingPageModule, 
+    AuthModule
   ],
   
   bootstrap: [AppComponent]
