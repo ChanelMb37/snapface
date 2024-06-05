@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private token! : string;
+  private token!: string;
 
   login() {
     this.token = 'MyFakeToken';
@@ -13,5 +13,4 @@ export class AuthService {
   getToken(): string {
     return this.token;
   }
-  
 }
