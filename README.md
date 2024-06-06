@@ -1,7 +1,7 @@
  Snapface 📸
 Hello les amis ,Je suis ravi de vous présenter Snapface, mon projet de fin de parcours chez OpenClassroom ! 🎉
 
-Snapface est une application de partage de photos qui permet à chacun de capturer et de partager des moments uniques et spéciaux. 🌟
+Snapface est une application de partage de photos developper sur Angular qui permet à chacun de capturer et de partager des moments uniques et spéciaux. 🌟
 
 Merci à tous ceux qui m'ont soutenu tout au long de ce voyage. 🙏
 
