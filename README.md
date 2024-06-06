@@ -1,27 +1,10 @@
-# Snapface
+ Snapface 📸
+Hello les amis ,Je suis ravi de vous présenter Snapface, mon projet de fin de parcours chez OpenClassroom ! 🎉
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+Snapface est une application de partage de photos developper sur Angular qui permet à chacun de capturer et de partager des moments uniques et spéciaux. 🌟
 
-## Development server
+Merci à tous ceux qui m'ont soutenu tout au long de ce voyage. 🙏
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Je suis ouvert à toutes les critiques constructives et à l'aide pour améliorer encore cette application. N'hésitez pas à ouvrir des issues ou à soumettre des pull requests ! 🤗
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Happy snapping! 📷✨
